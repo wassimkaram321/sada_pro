@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function captcha($tmp)
     {
-        $wass1 = 4;
+        $fadi=9;
         $phrase = new PhraseBuilder;
         $code = $phrase->build(4);
         $builder = new CaptchaBuilder($code, $phrase);
