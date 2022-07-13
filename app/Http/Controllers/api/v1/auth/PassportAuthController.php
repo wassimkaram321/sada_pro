@@ -39,6 +39,7 @@ class PassportAuthController extends Controller
             'temporary_token' => $temporary_token,
         ]);
 
+
         $phone_verification = Helpers::get_business_settings('phone_verification');
         $email_verification = Helpers::get_business_settings('email_verification');
         if ($phone_verification && !$user->is_phone_verified) {
