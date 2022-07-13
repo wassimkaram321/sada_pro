@@ -356,7 +356,7 @@
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                     style="display: {{Request::is('admin/product/list/seller*')?'block':''}}">
-                                    
+
                                     @if (\App\CPU\Helpers::get_business_settings('product_wise_shipping_cost_approval')==1)
                                     <li class="nav-item {{Request::is('admin/product/updated-product-list')?'active':''}}">
                                         <a class="nav-link "
@@ -616,7 +616,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    
+
                                     <li class="nav-item {{Request::is('admin/business-settings/refund/list/approved')?'active':''}}">
                                         <a class="nav-link"
                                            href="{{route('admin.business-settings.refund.list',['approved'])}}">
@@ -717,7 +717,7 @@
                                                {{\App\CPU\translate('by_seller')}}
                                             </span>
                                         </a>
-                                    </li> 
+                                    </li>
                                     <li class="nav-item {{Request::is('admin/business-settings/shipping-method/setting')?'active':''}}">
                                         <a class="nav-link"
                                            href="{{route('admin.business-settings.shipping-method.setting')}}">
@@ -856,6 +856,8 @@
                                             </span>
                                         </a>
                                     </li>
+
+                                {{--
                                     <li class="nav-item {{Request::is('admin/business-settings/privacy-policy')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.business-settings.privacy-policy')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -864,6 +866,9 @@
                                             </span>
                                         </a>
                                     </li>
+                               --}}
+
+
                                     <li class="nav-item {{Request::is('admin/business-settings/about-us')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.business-settings.about-us')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>

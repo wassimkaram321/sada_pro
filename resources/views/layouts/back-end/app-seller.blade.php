@@ -172,6 +172,7 @@
 @include('layouts.back-end.partials._front-settings')
 <!-- End Builder -->
 {{--loader--}}
+{{--
 <div class="container">
     <div class="row">
         <div class="col-12" style="width:85%;position: fixed;z-index: 9999;display: flex;align-items: center;justify-content: center;">
@@ -183,6 +184,7 @@
         </div>
     </div>
 </div>
+--}}
 {{--loader--}}
 <!-- JS Preview mode only -->
 @include('layouts.back-end.partials-seller._header')

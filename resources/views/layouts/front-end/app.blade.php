@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/home.css"/>
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/responsive1.css"/>
 
-    
+
     {{--dont touch this--}}
     <meta name="_token" content="{{csrf_token()}}">
     {{--dont touch this--}}
@@ -655,6 +655,7 @@
 <!-- Page title-->
 
 {{--loader--}}
+/*
 <div class="container">
     <div class="row">
         <div class="col-12" style="width:70%;position: fixed;z-index: 9999;display: flex;align-items: center;justify-content: center;">
@@ -666,6 +667,7 @@
         </div>
     </div>
 </div>
+*/
 {{--loader--}}
 
 <!-- Page Content-->
