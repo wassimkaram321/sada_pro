@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function captcha($tmp)
     {
-
+        $wass = null;
         $phrase = new PhraseBuilder;
         $code = $phrase->build(4);
         $builder = new CaptchaBuilder($code, $phrase);
@@ -54,7 +54,7 @@ class LoginController extends Controller
 
         //recaptcha validation
         $recaptcha = Helpers::get_business_settings('recaptcha');
-        if (isset($recaptcha) && $recaptcha['status'] == 1) {
+        if (true) {
             try {
                 $request->validate([
                     'g-recaptcha-response' => [
