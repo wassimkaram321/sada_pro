@@ -27,7 +27,6 @@ class Helpers
         } elseif ($id == 0) {
             $x = 'in-active';
         }
-
         return $x;
     }
 

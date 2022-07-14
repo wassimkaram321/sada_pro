@@ -224,10 +224,10 @@
     <script>
 
         $('#submit-create-role').on('submit',function(e){
-            
-            var fields = $("input[name='modules[]']").serializeArray(); 
-            if (fields.length === 0) 
-            { 
+
+            var fields = $("input[name='modules[]']").serializeArray();
+            if (fields.length === 0)
+            {
                 toastr.warning('{{ \App\CPU\translate('select_minimum_one_selection_box') }}', {
                             CloseButton: true,
                             ProgressBar: true
@@ -235,7 +235,7 @@
                 return false;
             }else{
                 $('#submit-create-role').submit();
-            } 
+            }
         });
     </script>
 @endpush

@@ -66,7 +66,7 @@
         @php($e_commerce_logo=\App\Model\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value)
         <a class="d-flex justify-content-center mb-5" href="javascript:">
             <img class="z-index-2" src="{{asset("storage/app/public/company/".$e_commerce_logo)}}" alt="Logo"
-                 onerror="this.src='{{asset('public/assets/back-end/img/400x400/img2.jpg')}}'"
+            onerror="this.src='{{asset('public/assets/back-end/img/400x400/img2.jpg')}}'"
                  style="width: 8rem;">
         </a>
 
@@ -104,6 +104,7 @@
                                     </span>
                                 </label>
 
+
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
                                            name="password" id="signupSrPassword" placeholder="8+ characters required"
@@ -122,6 +123,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <!-- End Form Group -->
 
                             <!-- Checkbox -->
@@ -135,7 +138,10 @@
                                 </div>
                             </div>
                             <!-- End Checkbox -->
+
                             {{-- recaptcha --}}
+
+                            {{--
                             @php($recaptcha = \App\CPU\Helpers::get_business_settings('recaptcha'))
                             @if(isset($recaptcha) && $recaptcha['status'] == 1)
                                 <div id="recaptcha_element" style="width: 100%;" data-type="image"></div>
@@ -154,10 +160,12 @@
                                     </div>
                                 </div>
                             @endif
-
+                            --}}
                             <button type="submit" class="btn btn-lg btn-block btn-primary">{{\App\CPU\translate('sign_in')}}</button>
                         </form>
+
                         <!-- End Form -->
+
                     </div>
                     @if(env('APP_MODE')=='demo')
                         <div class="card-footer">
@@ -220,6 +228,7 @@
 </script>
 
 {{-- recaptcha scripts start --}}
+{{--
 @if(isset($recaptcha) && $recaptcha['status'] == 1)
     <script type="text/javascript">
         var onloadCallback = function () {
@@ -249,7 +258,9 @@
         }
     </script>
 @endif
+--}}
 {{-- recaptcha scripts end --}}
+
 
 @if(env('APP_MODE')=='demo')
     <script>
