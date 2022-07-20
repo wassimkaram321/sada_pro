@@ -424,7 +424,7 @@
                                     <option value="0">
                                         {{\App\CPU\translate('choose_delivery_type')}}
                                     </option>
-                                    
+
                                     <option value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
                                         {{\App\CPU\translate('by_self_delivery_man')}}
                                     </option>
@@ -646,8 +646,8 @@
                             </form>
                         </div>
                     </div>
-                        
-                    
+
+
                 </div>
             </div>
         </div>
@@ -768,7 +768,7 @@
     $( document ).ready(function() {
         let delivery_type = '{{$order->delivery_type}}';
 
-        
+
         if(delivery_type === 'self_delivery'){
             $('#choose_delivery_man').show();
             $('#by_third_party_delivery_service_info').hide();
@@ -798,7 +798,7 @@
             $('#choose_delivery_man').hide();
             $('#by_third_party_delivery_service_info').hide();
         }
-        
+
     }
 </script>
     <script>

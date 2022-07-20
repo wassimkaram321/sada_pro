@@ -86,6 +86,7 @@
                         <th class=" ">{{\App\CPU\translate('Order')}}</th>
                         <th>{{\App\CPU\translate('Date')}}</th>
                         <th>{{\App\CPU\translate('customer_name')}}</th>
+                        <th>{{\App\CPU\translate('customer_type')}}</th>
                         <th>{{\App\CPU\translate('Status')}}</th>
                         <th>{{\App\CPU\translate('Total')}}</th>
                         <th>{{\App\CPU\translate('Order')}} {{\App\CPU\translate('Status')}} </th>
@@ -112,6 +113,19 @@
                                     <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
                                 @endif
                             </td>
+
+
+                            <td>
+                                @if($order->customer)
+                                    <a class="text-body text-capitalize"
+                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order["customer_type"]}}</a>
+                                @else
+                                    <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
+                                @endif
+                            </td>
+
+
+
                             <td>
                                 @if($order->payment_status=='paid')
                                     <span class="badge badge-soft-success">

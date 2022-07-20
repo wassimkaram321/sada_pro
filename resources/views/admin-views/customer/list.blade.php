@@ -201,6 +201,7 @@
                         <th class="table-column-pl-0">{{\App\CPU\translate('Name')}}</th>
                         <th>{{\App\CPU\translate('Email')}}</th>
                         <th>{{\App\CPU\translate('Phone')}}</th>
+                        <th>{{\App\CPU\translate('Customer Type')}}</th>
                         <th>{{\App\CPU\translate('Total')}} {{\App\CPU\translate('Order')}} </th>
                         <th>{{\App\CPU\translate('block')}} / {{\App\CPU\translate('unblock')}}</th>
                         <th>{{\App\CPU\translate('Action')}}</th>
@@ -224,6 +225,9 @@
                             <td>
                                {{$customer['phone']}}
                             </td>
+                            <td>
+                                {{$customer['user_type']}}
+                             </td>
                             <td>
                                 <label class="badge badge-soft-info">
                                     {{$customer->orders->count()}}

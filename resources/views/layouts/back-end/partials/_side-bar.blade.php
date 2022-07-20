@@ -759,6 +759,7 @@
                         @endif
                     <!--business settings ends here-->
 
+                     <!--
                         @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
                             <li class="nav-item {{(Request::is('admin/business-settings/social-media') || Request::is('admin/business-settings/terms-condition') || Request::is('admin/business-settings/web-config/refund-index') || Request::is('admin/business-settings/privacy-policy') || Request::is('admin/business-settings/about-us') || Request::is('admin/helpTopic/list') || Request::is('admin/business-settings/fcm-index') || Request::is('admin/business-settings/mail')|| Request::is('admin/business-settings/web-config/db-index')||Request::is('admin/business-settings/web-config/environment-setup') || Request::is('admin/business-settings/web-config'))?'scroll-here':''}}">
                                 <small class="nav-subtitle"
@@ -915,6 +916,7 @@
                                 </a>
                             </li>
                         @endif
+                        -->
                     <!--web & app settings ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('report'))

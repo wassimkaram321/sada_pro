@@ -1848,4 +1848,7 @@
   'Please_make_sure_all_the product\'s_delivery_charges_are_up_to_date.' => 'Please, make sure all the products delivery charges are up to date.',
   'no_data_found' => 'No data found',
   'No_data_to_show<' => 'No data to show ',
+  'Customer Type' => 'Customer Type',
+  'customer_type' => 'Customer type',
+  'customer added successfully' => 'Customer added successfully',
 );
