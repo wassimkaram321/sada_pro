@@ -58,8 +58,10 @@ class LoginController extends Controller
             'user_id' => 'required',
             'password' => 'required|min:8'
         ]);
-        
+
         //recaptcha validation
+
+        /*
         $recaptcha = Helpers::get_business_settings('recaptcha');
         if (isset($recaptcha) && $recaptcha['status'] == 1) {
             try {
@@ -84,6 +86,8 @@ class LoginController extends Controller
                 return back()->withErrors(\App\CPU\translate('Captcha Failed'));
             }
         }
+
+        */
 
         $remember = ($request['remember']) ? true : false;
 

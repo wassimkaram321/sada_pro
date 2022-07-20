@@ -132,7 +132,7 @@
                             <td>
                                 @if($order->customer)
                                     <a class="text-body text-capitalize"
-                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order->customer['customer_type']}}</a>
+                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order->customer['user_type']}}</a>
                                 @else
                                     <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
                                 @endif

@@ -1851,4 +1851,11 @@
   'Customer Type' => 'Customer Type',
   'customer_type' => 'Customer type',
   'customer added successfully' => 'Customer added successfully',
+  'card_holder_name' => 'Card holder name',
+  'card_holder_email' => 'Card holder email',
+  'card_number' => 'Card number',
+  'security_code' => 'Security code',
+  'installments' => 'Installments',
+  'identification_number' => 'Identification number',
+  'issuer' => 'Issuer',
 );

@@ -26,11 +26,15 @@ use function App\CPU\translate;
 
 class OrderController extends Controller
 {
+
+    //Done 
     public function list(Request $request, $status)
     {
         $query_param = [];
         $search = $request['search'];
-        if (session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1) {
+
+        if (session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1)
+        {
             $query = Order::whereHas('details', function ($query) {
                 $query->whereHas('product', function ($query) {
                     $query->where('added_by', 'admin');
@@ -42,16 +46,20 @@ class OrderController extends Controller
             } else {
                 $orders = $query;
             }
-        } else {
-            if ($status != 'all') {
+        } else
+        {
+            if ($status != 'all')
+            {
                 $orders = Order::with(['customer'])->where(['order_status' => $status]);
             } else {
                 $orders = Order::with(['customer']);
             }
         }
+
         Order::where(['checked' => 0])->update(['checked' => 1]);
 
-        if ($request->has('search')) {
+        if ($request->has('search'))
+        {
             $key = explode(' ', $request['search']);
             $orders = $orders->where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -63,7 +71,11 @@ class OrderController extends Controller
             $query_param = ['search' => $request['search']];
         }
 
-        $orders = $orders->where('order_type','default_type')->orderBy('id','desc')->paginate(Helpers::pagination_limit())->appends($query_param);
+        $orders = $orders->where('order_type', 'default_type')->orderBy('id', 'desc')->paginate(Helpers::pagination_limit())->appends($query_param);
+
+        foreach ($orders as $fadi) {
+            dd($fadi);
+        }
 
         return view('admin-views.order.list', compact('orders', 'search'));
     }
@@ -87,13 +99,11 @@ class OrderController extends Controller
         })->get();
 
         $shipping_address = ShippingAddress::find($order->shipping_address);
-        if($order->order_type == 'default_type')
-        {
-            return view('admin-views.order.order-details', compact('shipping_address','order', 'linked_orders', 'delivery_men'));
-        }else{
+        if ($order->order_type == 'default_type') {
+            return view('admin-views.order.order-details', compact('shipping_address', 'order', 'linked_orders', 'delivery_men'));
+        } else {
             return view('admin-views.pos.order.order-details', compact('order'));
         }
-
     }
 
     public function add_delivery_man($order_id, $delivery_man_id)
@@ -175,7 +185,7 @@ class OrderController extends Controller
         if ($request->order_status == 'delivered' && $order['seller_id'] != null) {
             OrderManager::wallet_manage_on_order_status_change($order, 'admin');
             OrderDetail::where('order_id', $order->id)->update(
-                ['delivery_status'=>'delivered']
+                ['delivery_status' => 'delivered']
             );
         }
 
@@ -197,8 +207,8 @@ class OrderController extends Controller
     {
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
         $seller = Seller::find($order->details->first()->seller_id);
-        $data["email"] = $order->customer !=null?$order->customer["email"]:\App\CPU\translate('email_not_found');
-        $data["client_name"] = $order->customer !=null? $order->customer["f_name"] . ' ' . $order->customer["l_name"]:\App\CPU\translate('customer_not_found');
+        $data["email"] = $order->customer != null ? $order->customer["email"] : \App\CPU\translate('email_not_found');
+        $data["client_name"] = $order->customer != null ? $order->customer["f_name"] . ' ' . $order->customer["l_name"] : \App\CPU\translate('customer_not_found');
         $data["order"] = $order;
 
         $mpdf_view = \View::make('admin-views.order.invoice')->with('order', $order)->with('seller', $seller);

@@ -11,6 +11,10 @@
 |
  */
 
+
+
+/*
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
@@ -152,8 +156,20 @@ Route::group(['prefix' => 'coupon', 'as' => 'coupon.', 'namespace' => 'Web'], fu
 //check done
 
 // SSLCOMMERZ Start
+
+
+
+
+*/
+
+
+
+
 /*Route::get('/example1', 'SslCommerzPaymentController@exampleEasyCheckout');
 Route::get('/example2', 'SslCommerzPaymentController@exampleHostedCheckout');*/
+
+
+/*
 Route::post('pay-ssl', 'SslCommerzPaymentController@index');
 Route::post('pay-ssl-app', 'SslCommerzPaymentController@index_app');
 
@@ -163,22 +179,29 @@ Route::post('/cancel', 'SslCommerzPaymentController@cancel');
 Route::post('/ipn', 'SslCommerzPaymentController@ipn');
 //SSLCOMMERZ END
 
+*/
+
 /*paypal*/
 /*Route::get('/paypal', function (){return view('paypal-test');})->name('paypal');*/
+/*
 Route::post('pay-paypal', 'PaypalPaymentController@payWithpaypal')->name('pay-paypal');
 Route::get('paypal-status', 'PaypalPaymentController@getPaymentStatus')->name('paypal-status');
 Route::get('paypal-success', 'PaypalPaymentController@success')->name('paypal-success');
 Route::get('paypal-fail', 'PaypalPaymentController@fail')->name('paypal-fail');
+*/
 /*paypal*/
 
 /*Route::get('stripe', function (){
 return view('stripe-test');
 });*/
+/*
 Route::get('pay-stripe', 'StripePaymentController@payment_process_3d')->name('pay-stripe');
 Route::get('pay-stripe/success', 'StripePaymentController@success')->name('pay-stripe.success');
 Route::get('pay-stripe/fail', 'StripePaymentController@success')->name('pay-stripe.fail');
-
+*/
 // Get Route For Show Payment razorpay Form
+
+/*
 Route::get('paywithrazorpay', 'RazorPayController@payWithRazorpay')->name('paywithrazorpay');
 Route::post('payment-razor', 'RazorPayController@payment')->name('payment-razor');
 Route::post('payment-razor/payment2', 'RazorPayController@payment_mobile')->name('payment-razor.payment2');
@@ -187,9 +210,11 @@ Route::get('payment-razor/fail', 'RazorPayController@success')->name('payment-ra
 
 Route::get('payment-success', 'Customer\PaymentController@success')->name('payment-success');
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
-
+*/
 
 //senang pay
+
+/*
 Route::match(['get', 'post'], '/return-senang-pay', 'SenangPayController@return_senang_pay')->name('return-senang-pay');
 
 //paystack
@@ -198,6 +223,7 @@ Route::get('/paystack-callback', 'PaystackController@handleGatewayCallback')->na
 Route::get('/paystack',function (){
     return view('paystack');
 });
+
 
 // paymob
 Route::post('/paymob-credit', 'PaymobController@credit')->name('paymob-credit');
@@ -247,3 +273,6 @@ Route::any('liqpay-callback', 'LiqPayController@callback')->name('liqpay-callbac
 Route::get('/test', function (){
     return view('welcome');
 });
+
+
+*/

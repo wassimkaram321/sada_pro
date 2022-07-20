@@ -238,7 +238,10 @@
                                 </ul>
                             </li>
                         @endif
+
                     <!--order management ends-->
+
+
 
                         @if(\App\CPU\Helpers::module_permission_check('product_management'))
                             <li class="nav-item {{(Request::is('admin/brand*') || Request::is('admin/category*') || Request::is('admin/sub*') || Request::is('admin/attribute*') || Request::is('admin/product*'))?'scroll-here':''}}">
@@ -287,6 +290,7 @@
                                         </a>
 
                                     </li>
+                                    <!--
                                     <li class="nav-item {{Request::is('admin/sub-category/view')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.sub-category.view')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -300,8 +304,12 @@
                                                 class="text-truncate">{{\App\CPU\translate('sub_sub_category')}}</span>
                                         </a>
                                     </li>
+
+                                    -->
+
                                 </ul>
                             </li>
+                            <!--
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.attribute.view')}}">
@@ -310,6 +318,7 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Attribute')}}</span>
                                 </a>
                             </li>
+                            -->
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/product/list/in_house') || Request::is('admin/product/bulk-import'))?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -594,6 +603,9 @@
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('business_settings')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
+
+
+
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/refund*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -616,6 +628,8 @@
                                             </span>
                                         </a>
                                     </li>
+
+
 
                                     <li class="nav-item {{Request::is('admin/business-settings/refund/list/approved')?'active':''}}">
                                         <a class="nav-link"
@@ -655,6 +669,9 @@
                                     </li>
                                 </ul>
                             </li>
+
+
+
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/seller-settings*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.business-settings.seller-settings.index')}}">
@@ -664,6 +681,8 @@
                                     </span>
                                 </a>
                             </li>
+
+                            <!--
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/payment-method')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.business-settings.payment-method.index')}}">
@@ -674,6 +693,7 @@
                                 </a>
                             </li>
 
+
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/sms-module')?'active':''}}">
                                 <a class="nav-link " href="{{route('admin.business-settings.sms-module')}}"
                                    title="{{\App\CPU\translate('sms')}} {{\App\CPU\translate('module')}}">
@@ -682,6 +702,7 @@
                                         class="text-truncate">{{\App\CPU\translate('sms')}} {{\App\CPU\translate('module')}}</span>
                                 </a>
                             </li>
+                              -->
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/shipping-method/setting')?'active':''}}">
                                 <a class="nav-link " href="{{route('admin.business-settings.shipping-method.setting')}}"
                                    title="{{\App\CPU\translate('shipping')}}">
@@ -738,6 +759,9 @@
                                 </a>
                             </li>
 
+
+
+                            <!--
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/social-login/view')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.social-login.view')}}">
@@ -757,7 +781,11 @@
                                 </a>
                             </li>
                         @endif
-                    <!--business settings ends here-->
+
+                        -->
+
+
+                        <!--business settings ends here-->
 
                      <!--
                         @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
@@ -919,6 +947,8 @@
                         -->
                     <!--web & app settings ends here-->
 
+
+                    <!--
                         @if(\App\CPU\Helpers::module_permission_check('report'))
                             <li class="nav-item {{(Request::is('admin/report/inhoue-product-sale') || Request::is('admin/report/seller-product-sale') || Request::is('admin/report/order') || Request::is('admin/report/earning'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">
@@ -974,7 +1004,10 @@
                                 </ul>
                             </li>
                         @endif
+                        -->
                     <!--reporting and analysis ends here-->
+
+
 
                         @if(\App\CPU\Helpers::module_permission_check('employee_section'))
                             <li class="nav-item {{(Request::is('admin/employee*') || Request::is('admin/custom-role*'))?'scroll-here':''}}">
