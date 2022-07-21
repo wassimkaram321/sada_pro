@@ -74,15 +74,70 @@
                             <h4>{{\App\CPU\translate('General Info')}}</h4>
                         </div>
                         <div class="card-body">
+                            {{-- <div class="form-group"> --}}
+                                    <!--
+                                    <div class="col-md-4">
+                                        <label for="name">{{\App\CPU\translate('Sub Category')}}</label>
+                                        <select class="js-example-basic-multiple form-control"
+                                            name="sub_category_id" id="sub-category-select"
+                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-category-select','select')">
+                                        </select>
+                                    </div>
+                                    -->
+
+                                    <!--
+                                    <div class="col-md-4">
+                                        <label for="name">{{\App\CPU\translate('Sub Sub Category')}}</label>
+                                        <select
+                                            class="js-example-basic-multiple form-control"
+                                            name="sub_sub_category_id" id="sub-sub-category-select">
+                                        </select>
+                                    </div>
+                                    -->
+
+                            {{-- </div> --}}
+
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-4">
+
+                                    <!--Brands-->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <label for="name" style="width: 100%;">{{\App\CPU\translate('Brand')}}</label>
+                                        <select
+                                            class="js-example-basic-multiple js-states js-example-responsive form-control"
+                                            name="brand_id" required  style="width: 100%;">
+                                            <option value="{{null}}" selected disabled>---{{\App\CPU\translate('Select')}}---</option>
+                                            @foreach($br as $b)
+                                                <option value="{{$b['id']}}">{{$b['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                <!--Stores-->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="name" >{{\App\CPU\translate('Store')}}</label>
+                                        <select
+                                            class="js-example-basic-multiple js-states js-example-responsive form-control"
+                                            name="store_id" required  style="width: 100%;">
+                                            <option value="{{null}}" selected disabled>---{{\App\CPU\translate('Select')}}---</option>
+                                            @foreach($st as $s)
+                                                <option value="{{$s['id']}}">{{$s['store_name']}}</option>
+                                            @endforeach
+                                        </select>
+                                </div>
+
+                            </div>
+
+                                <br>
+                                <div class="row">
+                                    <!--Category-->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                         <label for="name">{{\App\CPU\translate('Category')}}</label>
                                         <select
                                             class="js-example-basic-multiple form-control"
                                             name="category_id"
                                             onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-category-select','select')"
-                                            required>
+                                            required style="width: 100%;">
                                             <option value="{{old('category_id')}}" selected disabled>---Select---</option>
                                             @foreach($cat as $c)
                                                 <option value="{{$c['id']}}" {{old('name')==$c['id']? 'selected': ''}}>
@@ -91,54 +146,23 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="name">{{\App\CPU\translate('Sub Category')}}</label>
-                                        <select class="js-example-basic-multiple form-control"
-                                            name="sub_category_id" id="sub-category-select"
-                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-category-select','select')">
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="name">{{\App\CPU\translate('Sub Sub Category')}}</label>
-                                        <select
-                                            class="js-example-basic-multiple form-control"
-                                            name="sub_sub_category_id" id="sub-sub-category-select">
-
-                                        </select>
-                                    </div>
+                                <!--Unit-->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="name" >{{\App\CPU\translate('Unit')}}</label>
+                                    <select
+                                        class="js-example-basic-multiple form-control"
+                                        name="unit" style="width: 100%;">
+                                        @foreach(\App\CPU\Helpers::units() as $x)
+                                            <option
+                                                value="{{$x}}" {{old('unit')==$x? 'selected':''}}>{{$x}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="name">{{\App\CPU\translate('Brand')}}</label>
-                                        <select
-                                            class="js-example-basic-multiple js-states js-example-responsive form-control"
-                                            name="brand_id" required>
-                                            <option value="{{null}}" selected disabled>---{{\App\CPU\translate('Select')}}---</option>
-                                            @foreach($br as $b)
-                                                <option value="{{$b['id']}}">{{$b['name']}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="name">{{\App\CPU\translate('Unit')}}</label>
-                                        <select
-                                            class="js-example-basic-multiple form-control"
-                                            name="unit">
-                                            @foreach(\App\CPU\Helpers::units() as $x)
-                                                <option
-                                                    value="{{$x}}" {{old('unit')==$x? 'selected':''}}>{{$x}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-
+           {{--
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
                             <h4>{{\App\CPU\translate('Variations')}}</h4>
@@ -189,6 +213,7 @@
                             </div>
                         </div>
                     </div>
+            --}}
 
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
@@ -259,7 +284,7 @@
                                         <div>
                                             <label
                                             class="control-label">{{\App\CPU\translate('shipping_cost_multiply_with_quantity')}} </label>
-                                        
+
                                         </div>
                                         <div>
                                             <label class="switch">
@@ -311,7 +336,8 @@
                                     <input type="text" name="video_link" placeholder="{{\App\CPU\translate('EX')}} : https://www.youtube.com/embed/5R06LRdUCSE" class="form-control" required>
                                 </div>
 
-                                <div class="col-md-8">
+
+                                {{-- <div class="col-md-8">
                                     <div class="form-group">
                                         <label>{{\App\CPU\translate('Upload product images')}}</label><small
                                             style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
@@ -320,7 +346,7 @@
                                         <div class="row" id="coba"></div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-4">
                                     <div class="form-group">

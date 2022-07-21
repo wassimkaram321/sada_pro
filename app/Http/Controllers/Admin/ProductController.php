@@ -12,6 +12,7 @@ use App\Model\Color;
 use App\Model\DealOfTheDay;
 use App\Model\FlashDealProduct;
 use App\Model\Product;
+use App\Model\Store;
 use App\Model\Review;
 use App\Model\Translation;
 use App\Model\Wishlist;
@@ -30,7 +31,8 @@ class ProductController extends BaseController
     {
         $cat = Category::where(['parent_id' => 0])->get();
         $br = Brand::orderBY('name', 'ASC')->get();
-        return view('admin-views.product.add-new', compact('cat', 'br'));
+        $st = Store::orderBY('store_name', 'ASC')->get();
+        return view('admin-views.product.add-new', compact('cat', 'br','st'));
     }
 
     public function featured_status(Request $request)
@@ -65,7 +67,9 @@ class ProductController extends BaseController
     {
         $product = Product::with(['reviews'])->where(['id' => $id])->first();
         $reviews = Review::where(['product_id' => $id])->paginate(Helpers::pagination_limit());
-        return view('admin-views.product.view', compact('product', 'reviews'));
+        $brand=Brand::where(['id' => $product->brand_id])->first();
+        $store=Store::where(['id' => $product->store_id])->first();
+        return view('admin-views.product.view', compact('product', 'reviews','brand','store'));
     }
 
     public function store(Request $request)
@@ -73,16 +77,17 @@ class ProductController extends BaseController
         $validator = Validator::make($request->all(), [
             'category_id' => 'required',
             'brand_id' => 'required',
+            'store_id'=>'required',
             'unit' => 'required',
-            'images' => 'required',
+            //'images' => 'required',
             'image' => 'required',
-            'tax' => 'required|min:0',
+            //'tax' => 'required|min:0',
             'unit_price' => 'required|numeric|min:1',
             'purchase_price' => 'required|numeric|min:1',
             'discount' => 'required|gt:-1',
-            'shipping_cost' => 'required|gt:-1',
+            //'shipping_cost' => 'required|gt:-1',
         ], [
-            'images.required' => 'Product images is required!',
+            //'images.required' => 'Product images is required!',
             'image.required' => 'Product thumbnail is required!',
             'category_id.required' => 'category  is required!',
             'brand_id.required' => 'brand  is required!',
@@ -109,6 +114,7 @@ class ProductController extends BaseController
         $p->added_by = "admin";
         $p->name = $request->name[array_search('en', $request->lang)];
         $p->slug = Str::slug($request->name[array_search('en', $request->lang)], '-') . '-' . Str::random(6);
+        $p->store_id=$request->store_id;
 
         $category = [];
 
@@ -118,6 +124,7 @@ class ProductController extends BaseController
                 'position' => 1,
             ]);
         }
+        /*
         if ($request->sub_category_id != null) {
             array_push($category, [
                 'id' => $request->sub_category_id,
@@ -130,11 +137,15 @@ class ProductController extends BaseController
                 'position' => 3,
             ]);
         }
+        */
 
         $p->category_ids = json_encode($category);
         $p->brand_id = $request->brand_id;
         $p->unit = $request->unit;
         $p->details = $request->description[array_search('en', $request->lang)];
+
+
+        //add colors
 
         if ($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0) {
             $p->colors = json_encode($request->colors);
@@ -142,6 +153,9 @@ class ProductController extends BaseController
             $colors = [];
             $p->colors = json_encode($colors);
         }
+
+
+
         $choice_options = [];
         if ($request->has('choice')) {
             foreach ($request->choice_no as $key => $no) {
@@ -223,12 +237,15 @@ class ProductController extends BaseController
         if ($request->ajax()) {
             return response()->json([], 200);
         } else {
+
+
             if ($request->file('images')) {
                 foreach ($request->file('images') as $img) {
                     $product_images[] = ImageManager::upload('product/', 'png', $img);
                 }
                 $p->images = json_encode($product_images);
             }
+
             $p->thumbnail = ImageManager::upload('product/thumbnail/', 'png', $request->image);
 
             $p->meta_title = $request->meta_title;
@@ -237,6 +254,8 @@ class ProductController extends BaseController
 
             $p->save();
 
+
+            //Add Translation (Table translations)
             $data = [];
             foreach ($request->lang as $index => $key) {
                 if ($request->name[$index] && $key != 'en') {
@@ -248,6 +267,8 @@ class ProductController extends BaseController
                         'value' => $request->name[$index],
                     ));
                 }
+
+
                 if ($request->description[$index] && $key != 'en') {
                     array_push($data, array(
                         'translationable_type' => 'App\Model\Product',
@@ -259,6 +280,7 @@ class ProductController extends BaseController
                 }
             }
             Translation::insert($data);
+            //End Translation
 
             Toastr::success(translate('Product added successfully!'));
             return redirect()->route('admin.product.list', ['in_house']);
@@ -404,7 +426,7 @@ class ProductController extends BaseController
     }
     public function updated_shipping(Request $request)
     {
-    
+
         $product = Product::where(['id' => $request['product_id']])->first();
         if($request->status == 1)
         {
@@ -416,7 +438,7 @@ class ProductController extends BaseController
 
         $product->save();
         return response()->json([
-            
+
         ], 200);
     }
 
@@ -677,26 +699,35 @@ class ProductController extends BaseController
         }
     }
 
+    /*
     public function remove_image(Request $request)
     {
         ImageManager::delete('/product/' . $request['image']);
         $product = Product::find($request['id']);
         $array = [];
-        if (count(json_decode($product['images'])) < 2) {
-            Toastr::warning('You cannot delete all images!');
-            return back();
-        }
-        foreach (json_decode($product['images']) as $image) {
-            if ($image != $request['name']) {
-                array_push($array, $image);
+
+        $countImages=count(json_decode($product['images']));
+        if($countImages!=0)
+        {
+            if ($countImages < 2) {
+                Toastr::warning('You cannot delete all images!');
+                return back();
+            }
+
+            foreach (json_decode($product['images']) as $image) {
+                if ($image != $request['name']) {
+                    array_push($array, $image);
+                }
             }
         }
+
         Product::where('id', $request['id'])->update([
             'images' => json_encode($array),
         ]);
         Toastr::success('Product image removed successfully!');
         return back();
     }
+    */
 
     public function delete($id)
     {
@@ -709,9 +740,17 @@ class ProductController extends BaseController
         Cart::where('product_id', $product->id)->delete();
         Wishlist::where('product_id', $product->id)->delete();
 
-        foreach (json_decode($product['images'], true) as $image) {
-            ImageManager::delete('/product/' . $image);
+
+        /*
+        $countImages=count(json_decode($product['images']));
+        if($countImages!=0)
+        {
+            foreach (json_decode($product['images'], true) as $image) {
+                ImageManager::delete('/product/' . $image);
+            }
         }
+        */
+
         ImageManager::delete('/product/thumbnail/' . $product['thumbnail']);
         $product->delete();
 
@@ -736,7 +775,7 @@ class ProductController extends BaseController
             return back();
         }
 
-        
+
         $data = [];
         $skip = ['youtube_video_url', 'details', 'thumbnail'];
         foreach ($collections as $collection) {

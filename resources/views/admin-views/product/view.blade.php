@@ -23,7 +23,14 @@
             transition: all 0.3s ease;
             transform: scale(0.95);
         }
-    </style>
+        @media screen and (max-width: 768px){
+        .border-left{
+            /* border-left: none; */
+            /* color: red; */
+            border: none !important;
+        }
+    }
+        </style>
 @endpush
 
 @section('content')
@@ -140,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md">
+                    <div class="col-lg-6 col-md-6 col-sm-10">
                         <ul class="list-unstyled list-unstyled-py-2 mb-0">
 
                         @php($total=$product->reviews->count())
@@ -217,11 +224,11 @@
                             <!-- End Review Ratings -->
                         </ul>
                     </div>
-
                     <div class="col-12">
                         <hr>
                     </div>
-                    <div class="col-4 pt-2">
+                    <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
                         <div class="flex-start">
                             <h4 class="border-bottom">{{$product['name']}}</h4>
                         </div>
@@ -247,12 +254,21 @@
                             <span>{{\App\CPU\translate('Current Stock')}} : </span>
                             <span class="mx-1">{{ $product->current_stock }}</span>
                         </div>
-                        
+
+                        <div class="flex-start">
+                            <span>{{\App\CPU\translate('Brand Name')}} : </span>
+                            <span class="mx-1">{{ $brand->name }}</span>
+                        </div>
+
+                        <div class="flex-start">
+                            <span>{{\App\CPU\translate('Store Name')}} : </span>
+                            <span class="mx-1">{{ $store->store_name }}</span>
+                        </div>
+
                     </div>
+                    <div class="col-lg-8 col-md-8 col-sm-10 pt-2 border-left">
 
-                    <div class="col-8 pt-2 border-left">
-
-                        <span> @if (count(json_decode($product->colors)) > 0)
+                        {{-- <span> @if (count(json_decode($product->colors)) > 0)
                                 <div class="row no-gutters">
                                 <div class="col-2">
                                     <div class="product-description-label mt-2">{{\App\CPU\translate('Available color')}}:
@@ -272,12 +288,16 @@
                                 </div>
                             </div>
                             @endif</span><br>
-                        <span>
-                        {{\App\CPU\translate('Product Image')}}
+                        <span> --}}
 
-                     <div class="row">
+
+                            <div class="row" style="margin-left: 9%;">
+                                    {{\App\CPU\translate('Product Image')}}
+                                </div>
+                                <br>
+                                <div class="row" style="margin-left: 7%;">
                          @foreach (json_decode($product->images) as $key => $photo)
-                             <div class="col-md-3">
+                             <div class="col-md-7">
                                  <div class="card">
                                      <div class="card-body">
                                          <img style="width: 100%"
@@ -291,6 +311,7 @@
                      </div>
                     </span>
                     </div>
+                </div>
                 </div>
             </div>
             <!-- End Body -->

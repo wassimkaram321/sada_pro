@@ -1873,4 +1873,6 @@
   'Are_you_sure_delete_this_store' => 'Are you sure delete this store',
   'store_deleted_successfully' => 'Store deleted successfully',
   'Store Edit' => 'Store Edit',
+  'Brand Name' => 'Brand Name',
+  'Store Name' => 'Store Name',
 );

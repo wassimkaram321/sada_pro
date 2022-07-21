@@ -16,9 +16,13 @@
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/vendor.min.css">
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/custom.css">
+    
+    {{-- <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/all.min.css"> --}}
 
     <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->
