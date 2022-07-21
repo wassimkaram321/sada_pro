@@ -355,10 +355,18 @@
 <script src="{{asset('public/assets/back-end')}}/js/bootstrap.min.js"></script>
 {{-- light box --}}
 <script src="{{asset('public/js/lightbox.min.js')}}"></script>
+
+
+
+
+
+
+<!--check_order_pop_up_notification-->
 <audio id="myAudio">
     <source src="{{asset('public/assets/back-end/sound/notification.mp3')}}" type="audio/mpeg">
 </audio>
 <script>
+
     var audio = document.getElementById("myAudio");
 
     function playAudio() {
@@ -370,6 +378,7 @@
     }
 </script>
 <script>
+    /*
     setInterval(function () {
         $.get({
             url: '{{route('seller.get-order-data')}}',
@@ -387,7 +396,14 @@
     function check_order() {
         location.href = '{{route('seller.orders.list',['status'=>'all'])}}';
     }
+    */
 </script>
+
+
+
+
+
+
 
 <script>
     $("#search-bar-input").keyup(function () {

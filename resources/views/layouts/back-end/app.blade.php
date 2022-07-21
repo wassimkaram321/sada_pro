@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/vendor.min.css">
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/custom.css">
 
+    <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->
@@ -351,6 +353,12 @@
 <script src="{{asset('public/assets/back-end')}}/js/bootstrap.min.js"></script>
 {{-- light box --}}
 <script src="{{asset('public/js/lightbox.min.js')}}"></script>
+
+
+
+
+
+<!--check_order_pop_up_notification-->
 <audio id="myAudio">
     <source src="{{asset('public/assets/back-end/sound/notification.mp3')}}" type="audio/mpeg">
 </audio>
@@ -366,6 +374,7 @@
     }
 </script>
 <script>
+    /*
     setInterval(function () {
         $.get({
             url: '{{route('admin.get-order-data')}}',
@@ -383,7 +392,16 @@
     function check_order() {
         location.href = '{{route('admin.orders.list',['status'=>'all'])}}';
     }
+    */
 </script>
+
+
+
+
+
+
+
+
 <script>
     $("#search-bar-input").keyup(function () {
         $("#search-card").css("display", "block");

@@ -101,16 +101,19 @@
                         </div>
                     </li>
 
+                    <!--
                     <li class="nav-item d-none d-sm-inline-block">
                         <div class="hs-unfold">
                             <a title="Website home"
                                class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                               href="{{route('home')}}" target="_blank">
+                               href="route('home')}}" target="_blank">
                                 <i class="tio-globe"></i>
                                 {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
                             </a>
                         </div>
                     </li>
+
+                    -->
 
                     @if(\App\CPU\Helpers::module_permission_check('support_section'))
                     <li class="nav-item d-none d-sm-inline-block">

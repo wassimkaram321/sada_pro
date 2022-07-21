@@ -64,6 +64,14 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    //Done
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+
+
     public function scopeStatus($query)
     {
         return $query->where('featured_status', 1);
@@ -95,7 +103,7 @@ class Product extends Model
     {
         return $this->hasMany(OrderDetail::class, 'product_id')
                         ->where('delivery_status','delivered');
-                    
+
     }
 
     public function wish_list()

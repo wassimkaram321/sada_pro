@@ -56,6 +56,7 @@ class SystemController extends Controller
         }
         return response()->json(['message'=>'Maintenance is on.']);
     }
+    /*
     public function order_data()
     {
         $new_order = DB::table('orders')->where(['checked' => 0])->count();
@@ -64,4 +65,5 @@ class SystemController extends Controller
             'data' => ['new_order' => $new_order]
         ]);
     }
+    */
 }

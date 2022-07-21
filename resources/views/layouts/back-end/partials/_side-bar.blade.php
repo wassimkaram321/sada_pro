@@ -250,12 +250,45 @@
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
                             <!-- Pages -->
+
+
+
+                            <!-- Store Managment --> <!--Store section-->
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/store*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                   href="javascript:">
+                                    <i class="tio-shop nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Stores')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('admin/store*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/store/add-new')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.store.add-new')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{\App\CPU\translate('add_new')}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('admin/store/list')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.store.list')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{\App\CPU\translate('List')}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- End Store Managment -->
+
+
+
+
+                            <!-- pharma brands Managment -->
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/brand*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
                                     <i class="tio-apple-outlined nav-icon"></i>
                                     <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('brands')}}</span>
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('pharma brands')}}</span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                     style="display: {{Request::is('admin/brand*')?'block':'none'}}">
@@ -273,12 +306,18 @@
                                     </li>
                                 </ul>
                             </li>
+                         <!-- End pharma brands Managment -->
+
+
+
+
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/category*') ||Request::is('admin/sub*')) ?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
                                     <i class="tio-filter-list nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                         {{\App\CPU\translate('categories')}}
+
                                     </span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
@@ -322,7 +361,7 @@
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/product/list/in_house') || Request::is('admin/product/bulk-import'))?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
-                                    <i class="tio-shop nav-icon"></i>
+                                    <i class="fa fa-medkit nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                         <span class="text-truncate">{{\App\CPU\translate('InHouse Products')}}</span>
                                     </span>
@@ -405,6 +444,10 @@
                         @endif
                     <!--product management ends-->
 
+
+
+
+
                         @if(\App\CPU\Helpers::module_permission_check('marketing_section'))
                             <li class="nav-item {{(Request::is('admin/banner*') || Request::is('admin/coupon*') || Request::is('admin/notification*') || Request::is('admin/deal*'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('Marketing_Section')}}</small>
@@ -435,6 +478,7 @@
                                     </span>
                                 </a>
                             </li>
+                            <!--
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/deal/flash')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.deal.flash')}}">
@@ -461,7 +505,9 @@
                                     </span>
                                 </a>
                             </li>
+                               -->
                         @endif
+
                     <!--marketing section ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('business_section'))

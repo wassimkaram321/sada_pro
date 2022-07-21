@@ -286,14 +286,14 @@ class OrderManager
                 $shipping_type = isset($seller_shipping)==true? $seller_shipping->shipping_type:'order_wise';
             }
         }
-        
+
         $or = [
             'id' => $order_id,
             'verification_code' => rand(100000, 999999),
             'customer_id' => $user->id,
             'seller_id' => $seller_data->seller_id,
             'seller_is' => $seller_data->seller_is,
-            'customer_type' => 'customer',
+            'customer_type' => 'customer',        //MMMMMM
             'payment_status' => $data['payment_status'],
             'order_status' => $data['order_status'],
             'payment_method' => $data['payment_method'],
@@ -425,7 +425,7 @@ class OrderManager
                 Helpers::send_push_notif_to_device($fcm_token, $data);
                 Helpers::send_push_notif_to_device($seller_fcm_token, $data);
             }
-            
+
             Mail::to($user->email)->send(new \App\Mail\OrderPlaced($order_id));
             // if ($order['seller_is'] == 'seller') {
             //     $seller = Seller::where(['id' => $seller_data->seller_id])->first();
