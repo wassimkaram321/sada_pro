@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\api\v2\delivery_man;
-
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\DeliveryHistory;
@@ -16,10 +15,35 @@ use App\CPU\OrderManager;
 
 class DeliveryManController extends Controller
 {
+
     public function info(Request $request)
     {
         return response()->json($request['delivery_man'], 200);
     }
+
+
+
+    //عن طريق مشرف التوزيع جدولة الطلبات
+    public function scheduling_orders()
+    {
+
+
+
+
+
+    }
+
+
+
+    //انشاء رحلة توزيع عن طريق مشرف توزيع
+    public function create_deliveries_journey()
+    {
+
+
+
+
+    }
+
 
     public function get_current_orders(Request $request)
     {
@@ -87,7 +111,7 @@ class DeliveryManController extends Controller
         ]);
 
         $order = Order::where(['delivery_man_id' => $d_man['id'], 'id' => $request['order_id']])->first();
-        
+
         try {
             $fcm_token = $order->customer->cm_firebase_token;
             if ($request['status'] == 'out_for_delivery') {
@@ -95,7 +119,7 @@ class DeliveryManController extends Controller
             } elseif ($request['status'] == 'delivered') {
                 $value = Helpers::order_status_update_message('delivered');
             }
-            
+
             if ($value) {
                 $data = [
                     'title' => translate('order'),
