@@ -757,7 +757,9 @@
                                         class="text-truncate">{{\App\CPU\translate('shipping')}}</span>
                                 </a>
                             </li>
-                            {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/shipping-method*')?'active':''}}">
+
+
+                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/shipping-method*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
                                     <i class="tio-car nav-icon"></i>
@@ -795,8 +797,12 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li> --}}
+                            </li>
 
+
+
+
+                            
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/language*')?'active':''}}">
                                 <a class="nav-link " href="{{route('admin.business-settings.language.index')}}"
                                    title="{{\App\CPU\translate('languages')}}">

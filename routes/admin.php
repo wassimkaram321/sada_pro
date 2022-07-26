@@ -143,7 +143,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('get-category-id', 'SubSubCategoryController@getCategoryId')->name('getCategoryId');
         });
 
-        
+
 
 
         //Pharma brands
@@ -412,7 +412,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
 
             Route::group(['prefix' => 'shipping-method', 'as' => 'shipping-method.','middleware'=>['module:business_settings']], function () {
                 Route::get('by/admin', 'ShippingMethodController@index_admin')->name('by.admin');
-                //Route::get('by/seller', 'ShippingMethodController@index_seller')->name('by.seller');
+                Route::get('by/seller', 'ShippingMethodController@index_seller')->name('by.seller');
                 Route::post('add', 'ShippingMethodController@store')->name('add');
                 Route::get('edit/{id}', 'ShippingMethodController@edit')->name('edit');
                 Route::put('update/{id}', 'ShippingMethodController@update')->name('update');
@@ -616,7 +616,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
 
 
 
-        Route::group(['prefix' => 'delivery-man', 'as' => 'delivery-man.'], function () {
+        // add middleware(distribution_management) --> controller
+        Route::group(['prefix' => 'delivery-man', 'as' => 'delivery-man.','middleware'=>['module:distribution_management']], function () {
             Route::get('add', 'DeliveryManController@index')->name('add');
             Route::post('store', 'DeliveryManController@store')->name('store');
             Route::get('list', 'DeliveryManController@list')->name('list');
@@ -626,6 +627,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::delete('delete/{id}', 'DeliveryManController@delete')->name('delete');
             Route::post('search', 'DeliveryManController@search')->name('search');
             Route::post('status-update', 'DeliveryManController@status')->name('status-update');
+
+
         });
 
 

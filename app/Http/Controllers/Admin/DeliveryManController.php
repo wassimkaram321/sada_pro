@@ -195,4 +195,31 @@ class DeliveryManController extends Controller
         Toastr::success(translate('Delivery-man removed!'));
         return back();
     }
+
+
+
+    //عن طريق مشرف التوزيع جدولة الطلبات
+    public function scheduling_orders()
+    {
+
+        
+
+
+
+
+    }
+
+
+
+    //انشاء رحلة توزيع عن طريق مشرف توزيع
+    public function create_deliveries_journey()
+    {
+
+
+
+
+    }
+
+
+
 }

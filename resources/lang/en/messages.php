@@ -1875,4 +1875,6 @@
   'Store Edit' => 'Store Edit',
   'Brand Name' => 'Brand Name',
   'Store Name' => 'Store Name',
+  'distribution_management' => 'Distribution management',
+  'Distribution_management' => 'Distribution management',
 );

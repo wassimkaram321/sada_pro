@@ -21,30 +21,7 @@ class DeliveryManController extends Controller
         return response()->json($request['delivery_man'], 200);
     }
 
-
-
-    //عن طريق مشرف التوزيع جدولة الطلبات
-    public function scheduling_orders()
-    {
-
-
-
-
-
-    }
-
-
-
-    //انشاء رحلة توزيع عن طريق مشرف توزيع
-    public function create_deliveries_journey()
-    {
-
-
-
-
-    }
-
-
+    //جلب جميع الاوردرات الخاصة برحلة معينة لموزع معين بعد جدولة طلبات وعدم جلب جميع الاوردرات
     public function get_current_orders(Request $request)
     {
         $d_man = $request['delivery_man'];

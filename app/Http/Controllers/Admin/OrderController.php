@@ -27,7 +27,7 @@ use function App\CPU\translate;
 class OrderController extends Controller
 {
 
-    //Done 
+    //Done
     public function list(Request $request, $status)
     {
         $query_param = [];
@@ -72,10 +72,6 @@ class OrderController extends Controller
         }
 
         $orders = $orders->where('order_type', 'default_type')->orderBy('id', 'desc')->paginate(Helpers::pagination_limit())->appends($query_param);
-
-        foreach ($orders as $fadi) {
-            dd($fadi);
-        }
 
         return view('admin-views.order.list', compact('orders', 'search'));
     }

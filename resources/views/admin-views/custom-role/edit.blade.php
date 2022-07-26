@@ -139,6 +139,19 @@
                                                for="pos_management">{{\App\CPU\translate('pos_management')}}</label>
                                     </div>
                                 </div>
+
+                                {{-- edit Distribution management ( Distribution section , delivery_man_management) --}}
+                                <div class="col-md-3">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="modules[]" value="delivery_man_management" class="form-check-input"
+                                               id="delivery_man_management" {{in_array('delivery_man_management',(array)json_decode($role['module_access']))?'checked':''}}>
+                                        <label class="form-check-label" style="{{Session::get('direction') === "rtl" ? 'margin-right: 1.25rem;' : ''}};"
+                                               for="delivery_man_management">{{\App\CPU\translate('Distribution_management')}}</label>
+                                    </div>
+                                </div>
+
+
+
                             </div>
 
                             <button type="submit" class="btn btn-primary">{{\App\CPU\translate('update')}}</button>
@@ -154,10 +167,10 @@
 <script>
 
     $('#submit-create-role').on('submit',function(e){
-        
-        var fields = $("input[name='modules[]']").serializeArray(); 
-        if (fields.length === 0) 
-        { 
+
+        var fields = $("input[name='modules[]']").serializeArray();
+        if (fields.length === 0)
+        {
             toastr.warning('{{ \App\CPU\translate('select_minimum_one_selection_box') }}', {
                         CloseButton: true,
                         ProgressBar: true
@@ -165,7 +178,7 @@
             return false;
         }else{
             $('#submit-create-role').submit();
-        } 
+        }
     });
 </script>
 @endpush
