@@ -594,13 +594,13 @@ class Helpers
         } else {
             $oldValue = env($envKey);
         }
-//        $oldValue = var_export(env($envKey), true);
+        //        $oldValue = var_export(env($envKey), true);
 
         if (strpos($str, $envKey) !== false) {
             $str = str_replace("{$envKey}={$oldValue}", "{$envKey}={$envValue}", $str);
 
-//            dd("{$envKey}={$envValue}");
-//            dd($str);
+       //            dd("{$envKey}={$envValue}");
+       //            dd($str);
         } else {
             $str .= "{$envKey}={$envValue}\n";
         }

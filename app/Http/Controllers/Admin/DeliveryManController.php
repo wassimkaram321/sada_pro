@@ -202,7 +202,7 @@ class DeliveryManController extends Controller
     public function scheduling_orders()
     {
 
-        
+
 
 
 
